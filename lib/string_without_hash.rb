@@ -15,3 +15,15 @@ class StringWithoutHash
   end
 
 end
+
+class StringWithHash < StringWithoutHash
+
+  def eql?( other )
+    self == other
+  end
+
+  def hash
+    @text.hash
+  end
+
+end

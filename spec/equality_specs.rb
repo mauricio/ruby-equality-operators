@@ -77,6 +77,29 @@ describe 'when comparing objects' do
 
   end
 
+  context 'with hash method' do
+
+    before do
+      @first  = StringWithHash.new('first')
+      @second = StringWithHash.new('first')
+    end
+
+    it 'should be equal' do
+      @first.should == @second
+    end
+
+    it 'should add as two different keys in the hash' do
+
+      @texts          = {}
+      @texts[@first]  = 'one'
+      @texts[@second] = 'two'
+
+      @texts.keys.size.should == 1
+
+    end
+
+  end
+
   context 'for points' do
 
     it 'should be equal' do
