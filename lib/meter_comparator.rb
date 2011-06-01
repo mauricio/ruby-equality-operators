@@ -23,6 +23,10 @@ module MeterComparator
     result
   end
 
+  def eql?( other )
+    self == other
+  end
+
   def inspect
     "#<#{self.class}:#{self.hash} size_in_meters=#{self.to_meters}>"
   end

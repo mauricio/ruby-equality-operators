@@ -13,6 +13,10 @@ class Meter
     self.to_meters.hash
   end
 
+  def eql?( other )
+    self == other
+  end
+
   def ==( other )
     if other.respond_to?( :to_meters )
       (self.to_meters == other.to_meters)
