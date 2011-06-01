@@ -54,45 +54,43 @@ describe 'when comparing objects' do
 
   end
 
-  context 'no hash method issue' do
-
-    before do
-      @first  = StringWithoutHash.new('first')
-      @second = StringWithoutHash.new('first')
-    end
+  context 'without hash and eql? methods' do
 
     it 'should be equal' do
+      @first  = StringWithoutHash.new('first')
+      @second = StringWithoutHash.new('first')
       @first.should == @second
     end
 
     it 'should add as two different keys in the hash' do
 
-      @texts          = {}
-      @texts[@first]  = 'one'
-      @texts[@second] = 'two'
+      @texts = {}
 
-      @texts.keys.size.should == 2
+      10.times do
+        @texts[ StringWithoutHash.new('first') ] = 'one'
+      end
+
+      @texts.keys.size.should == 10
 
     end
 
   end
 
-  context 'with hash method' do
-
-    before do
-      @first  = StringWithHash.new('first')
-      @second = StringWithHash.new('first')
-    end
+  context 'with hash and eql? methods' do
 
     it 'should be equal' do
+      @first  = StringWithHash.new('first')
+      @second = StringWithHash.new('first')
       @first.should == @second
     end
 
-    it 'should add as two different keys in the hash' do
+    it 'should add as a single key in the hash' do
 
-      @texts          = {}
-      @texts[@first]  = 'one'
-      @texts[@second] = 'two'
+      @texts = {}
+
+      50.times do
+        @texts[ StringWithHash.new('first') ] = 'one'
+      end
 
       @texts.keys.size.should == 1
 
